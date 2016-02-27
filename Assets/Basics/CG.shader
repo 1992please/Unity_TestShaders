@@ -1,4 +1,4 @@
-﻿Shader "CG basic shader"
+﻿Shader "CGBasics/Minimal Shader"
 {
 	SubShader
 	{
@@ -11,7 +11,7 @@
 				float4 vert(float4 vertexPos:POSITION) : SV_POSITION
 				{
 					return mul(UNITY_MATRIX_MVP, 
-              float4(0, 1.0, 1.0, 1.0) * vertexPos);
+              float4(1.0, 1.0, 1.0, 1.0) * vertexPos);
 				}
 
 				float4 frag(void): COLOR
