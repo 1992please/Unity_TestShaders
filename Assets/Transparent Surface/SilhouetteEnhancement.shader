@@ -19,7 +19,7 @@
 				#pragma vertex vert
 				#pragma fragment frag
 
-				#include "UnityCG.cginc"
+				//#include "UnityCG.cginc"
 
 				uniform float4 _Color; //define shader property for shaders
 
