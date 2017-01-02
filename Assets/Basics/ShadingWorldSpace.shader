@@ -1,4 +1,6 @@
-﻿Shader "CGBasics/Shading In World Space"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "CGBasics/Shading In World Space"
 {
 	Properties {
       _Point ("a point in world space", Vector) = (0., 0., 0., 1.0)
@@ -35,7 +37,7 @@
 			{
 				VertexOutput Output;
 				Output.Pos = mul(UNITY_MATRIX_MVP, Input.Vertex);
-				Output.PositionWorld = mul(_Object2World, Input.Vertex);
+				Output.PositionWorld = mul(unity_ObjectToWorld, Input.Vertex);
 				// http://docs.unity3d.com/Manual/SL-UnityShaderVariables.html
 				return Output;
 			}

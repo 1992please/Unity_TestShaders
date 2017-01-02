@@ -1,4 +1,7 @@
-﻿Shader "CGBasicLighting/SpecularHighlightsShaderPerVertex"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
+Shader "CGBasicLighting/SpecularHighlightsShaderPerVertex"
 {
 	Properties
 	{
@@ -41,8 +44,8 @@
 			VertexOutput vert(VertexInput Input)
 			{
 				VertexOutput Output;
-				float4x4 modelMatrix = _Object2World;
-				float4x4 modelMatrixInverse = _World2Object;
+				float4x4 modelMatrix = unity_ObjectToWorld;
+				float4x4 modelMatrixInverse = unity_WorldToObject;
 
 				// we don't need a code for spotlight here but we will leave it to be easier to copy to the ForwardAdd pass
 				float3 vertexToLightSource = _WorldSpaceLightPos0.xyz - mul(modelMatrix, Input.vertex * _WorldSpaceLightPos0.w).xyz; 
@@ -118,8 +121,8 @@
 			VertexOutput vert(VertexInput Input)
 			{
 				VertexOutput Output;
-				float4x4 modelMatrix = _Object2World;
-				float4x4 modelMatrixInverse = _World2Object;
+				float4x4 modelMatrix = unity_ObjectToWorld;
+				float4x4 modelMatrixInverse = unity_WorldToObject;
 
 				// we don't need a code for spotlight here but we will leave it to be easier to copy to the ForwardAdd pass
 				float3 vertexToLightSource = _WorldSpaceLightPos0.xyz - mul(modelMatrix, Input.vertex * _WorldSpaceLightPos0.w).xyz; 

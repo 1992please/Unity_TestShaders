@@ -1,4 +1,7 @@
-﻿Shader "CGBasicTexturing/TextureShadedWithlighting" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
+Shader "CGBasicTexturing/TextureShadedWithlighting" {
    Properties {
       _MainTex ("Texture For Diffuse Material Color", 2D) = "white" {} 
       _Color ("Overall Diffuse Color Filter", Color) = (1,1,1,1)
@@ -46,8 +49,8 @@
          {
             vertexOutput output;
 
-            float4x4 modelMatrix = _Object2World;
-            float4x4 modelMatrixInverse = _World2Object; 
+            float4x4 modelMatrix = unity_ObjectToWorld;
+            float4x4 modelMatrixInverse = unity_WorldToObject; 
 
             float3 normalDirection = normalize(
                mul(float4(input.normal, 0.0), modelMatrixInverse).xyz);
@@ -154,8 +157,8 @@
          {
             vertexOutput output;
 
-            float4x4 modelMatrix = _Object2World;
-            float4x4 modelMatrixInverse = _World2Object; 
+            float4x4 modelMatrix = unity_ObjectToWorld;
+            float4x4 modelMatrixInverse = unity_WorldToObject; 
 
             float3 normalDirection = normalize(
                mul(float4(input.normal, 0.0), modelMatrixInverse).xyz);

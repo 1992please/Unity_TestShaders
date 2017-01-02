@@ -1,4 +1,7 @@
-﻿Shader "CGTransparentSurfaces/SilhouetteEnhancement"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+
+Shader "CGTransparentSurfaces/SilhouetteEnhancement"
 {
 	Properties
 	{
@@ -39,8 +42,8 @@
 				VertexOutput vert(VertexInput Input)
 				{
 					VertexOutput Output;
-					Output.Normal = normalize(mul(float4(Input.Normal, 0.0), _World2Object).xyz);
-					Output.ViewDir = normalize(_WorldSpaceCameraPos - mul(_Object2World, Input.Vertex).xyz);
+					Output.Normal = normalize(mul(float4(Input.Normal, 0.0), unity_WorldToObject).xyz);
+					Output.ViewDir = normalize(_WorldSpaceCameraPos - mul(unity_ObjectToWorld, Input.Vertex).xyz);
 					Output.Pos = mul(UNITY_MATRIX_MVP, Input.Vertex);
 					return Output;
 				}
